@@ -1,7 +1,25 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <el-form v-model="form" size="small">
+      <el-form-item label="账号：">
+          <el-input
+            v-model="form.title"
+          ></el-input>
+        </el-form-item>
+
+              <el-form-item label="密码：">
+          <el-input
+            v-model="form.psd"
+          ></el-input>
+        </el-form-item>
+    </el-form>
+
+    <el-row>
+  <el-button @click="confirm">提交</el-button>
+
+    </el-row>
+    <!-- <h2>Essential Links</h2>
     <ul>
       <li>
         <a
@@ -79,16 +97,37 @@
           awesome-vue
         </a>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      form: {
+        title: '',
+        psd: ''
+      }
+    }
+  },
+
+  methods: {
+    confirm () {
+      axios({
+        method: 'post',
+        url: '/bbb',
+        data: {
+          name: 'liuning',
+          age: 22,
+          friends: ['xiaohong']
+        }
+      }).then(data => {
+        console.log(data)
+      })
     }
   }
 }

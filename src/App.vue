@@ -16,6 +16,13 @@ export default {
     }).then(data => {
       console.log(data)
     })
+
+    // axios({
+    //   method: 'get',
+    //   url: '/bbb'
+    // }).then(data => {
+    //   console.log(data)
+    // })
   }
 }
 </script>
