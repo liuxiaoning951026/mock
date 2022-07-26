@@ -5,7 +5,6 @@
  */
 const path = require('path') // 文件路径
 const fs = require('fs') // 文件目录结构
-const http = require('http') // http服务
 
 const Koa = require('koa') // 后端服务
 const bodyParser = require('koa-bodyparser')
@@ -51,6 +50,5 @@ app.use(async (ctx, next) => {
 })
 
 const port = 18080
-const server = http.createServer(app.callback())
-server.listen(port)
+app.listen(port)
 console.log(`'localhost:${port} listen!!!`)
