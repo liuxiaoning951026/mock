@@ -1,4 +1,4 @@
-**# 怎么使用 koa2 搭建 mock-server
+# 怎么使用 koa2 搭建 mock-server
 
 
 ### 什么是mock-server?
@@ -8,30 +8,27 @@
 > 作为一名前端开发人员，在日常开发中，不可避免的会和后端联调接口，但是有时候前端页面做完了，后端接口没写完，这样就导致前端的工作无法进一步进行。因此，我们往往会自己造一些数据，来模拟后台请求，将前端的逻辑提前一步写完，等待后端接口写好之后，替换一下地址就行了。
 
 ### mock-server具有什么优点？
-- 与线上环境一致的接口地址，每次构建前端代码时不需要修改调用接口的代码。
-- 所改即所得，具有热更新的能力，每次增加 /修改 mock 接口时不需要重启 mock 服务，更不用重启前端构建服务。
-- 能配合 Webpack一起使用。
-- mock 数据可以由工具生成不需要自己手动写。
-- 能模拟 POST、GET 请求。
-- 文件结构简单易于管理。
-- 基于Node的 Express web 搭建的一个本地server。
-- 数据mock的思路就是在这个本地server端进行，Promise 发出http请求，通过 router 返回mock数据。
+- 与线上环境一致的接口地址，每次构建前端代码时**不需要修改调用接口的代码**。
+- 所改即所得，具有热更新的能力，每次增加 /修改 mock 接口时**不需要重启 mock 服务，更不用重启前端构建服务**。
+- 能配合 **Webpack**一起使用。
+- 能模拟 **POST、GET** 请求。
+- 文件结构简单**易于管理**。
+- 基于Node的 Express web 搭建的一个**本地server**。
+- 数据mock的思路就是在这个本地server端进行，Promise 发出http请求，通过 **监听请求服务** 返回mock数据。
 
 
 ## 搭建过程中用到的插件介绍
 
 ###  什么是koa（官方简介）？
-> 由 Express 原班人马打造的 koa，致力于成为一个更小、更健壮、更富有表现力的 Web 框架。使用 koa 编写 web 应用，通过组合不同的 generator，可以免除重复繁琐的回调函数嵌套，并极大地提升常用错误处理效率。Koa 不在内核方法中绑定任何中间件，它仅仅提供了一个轻量优雅的函数库，使得编写 Web 应用变得得心应手。
+> 由 Express 原班人马打造的 koa，致力于成为一个更小、更健壮、更富有表现力的 Web 框架。使用 koa 编写 web 应用，通过组合不同的 generator，可以免除重复繁琐的回调函数嵌套，并极大地提升常用错误处理效率。Koa 不在内核方法中绑定任何中间件，它仅仅提供了一个轻量优雅的函数库，使得编写 Web 应用变得得心应手。可参考官网[链接][1]
+
+  [1]: https://github.com/guo-yu/koa-guide
 
 - 充分利用async + await + promise的特点，有效的规避了回调函数，且增强了错误处理。
 - 快速而愉快地编写服务端应用程序。
 
 ### 接着看一下，如何利用koa实现一个后端服务
   ![默认的目录](../assets/img2.jpg)
-
-  参考官网[链接][1]
-
-  [1]: https://github.com/guo-yu/koa-guide
 
  ### 插件 jsonfile、koa-bodyparser、koa-router、pm2了解一下？
 
@@ -46,17 +43,17 @@
 
   [1]: https://www.jianshu.com/p/93ad4dcd4eab?u_atoken=6794df98-7a84-4a3c-b6e1-28a388863042&u_asession=01dGp0RhZBUobiMvEPHGv38BAGtK0YrIyb9-0s2ZDGw7TI47dFLe7DYT89ESaL7jPUX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K8EskeXd8hnF2UDi3dMuRqanHmbkqVcEgdObpAroqY1_GBkFo3NEHBv0PZUm6pbxQU&u_asig=0505eyQvUZtlo6qZiZ3pbAbm47YU2Eruon1jYoJc7a_uqxn-o3Zmh3EGyqpQ67lC2XYMkpY3YTKJ-1NLYFQHEB6UoPoN_QRA6CEsT-n1pUR6J4uAbkSEic59f-kVyEvegnGsM26p-O_w5ey0WPQ06DOA2OJ09xr3PbKNcUhRGnNPX9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzS67CRJ66kHxILq913v5PxUA6ldj35r9j8X9gL20mNtL6xbSxAaWh9ph0bRUFW-6vO3h9VXwMyh6PgyDIVSG1W-p19Gz9E4fke4O4X1XFCNUPdP6HxyoHGw6I9ABYWNepnJv6Ykj6ttjJGx3d-oadgCosViMfT0E4l8xylT2fhwPmWspDxyAEEo4kbsryBKb9Q&u_aref=TVvzNViD%2F%2FO%2BdC0KAcl4zcDXXrQ%3D
  - koa-router
-    > 定义非常简洁，含义也一目了然，它就是koa的路由中间件。koa为了自身的轻量，不在内核方法中绑定任何中间件，而路由功能对于一个web框架来说，又是必不可少的基础功能。因此koa-router为koa提供了强大的路由功能。参考链接[ 链接][1]。
+    > 定义非常简洁，含义也一目了然，它就是koa的路由中间件。koa为了自身的轻量，不在内核方法中绑定任何中间件，而路由功能对于一个web框架来说，又是必不可少的基础功能。因此koa-router为koa提供了强大的路由功能。参考[ 链接][1]。
 
   [1]: https://blog.csdn.net/qq_31967569/article/details/103784078
  - pm2
-    > PM2是JavaScript运行时Node.js的进程管理器。 允许一直保持应用程序活跃，无需停机即可重新加载它们，并促进常见的Devops任务。参考链接[ 链接][1]。
+    > PM2是JavaScript运行时Node.js的进程管理器。 允许一直保持应用程序活跃，无需停机即可重新加载它们，并促进常见的Devops任务。参考[ 链接][1]。
 
   [1]: https://www.leixue.com/ask/what-is-pm2
 
-### 搭建流程
+# 搭建流程
 
-- 检查node版本是否可以使用koa。(Koa 依赖 node v7.6.0 或 ES2015及更高版本和 async 方法支持.)
+- 检查node版本是否可以使用koa。(Koa 依赖 node v7.6.0 或 ES2015及更高版本和 async 方法支持)
   ```
   node -v
   ```
@@ -153,4 +150,3 @@
 - 增加后端返回数据文件并借助axios完成请求过程
 
 ### 整个流程就是上面描述这样，现在就让我们以mock工程为例，编写自己的mock-server工具吧。
-**
