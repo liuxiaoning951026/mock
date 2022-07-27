@@ -12,7 +12,7 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
-    "mock": "pm2 start ./mock/server.js"
+    "mock": "pm2 start pm2.mock.config.json"
   },
   "dependencies": {
     "axios": "^0.22.0",

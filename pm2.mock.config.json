@@ -1,0 +1,9 @@
+{
+  "apps": {
+    "name": "server01",
+    "script": "./mock/server.js",
+    "exec_mode": "cluster_mode",
+    "instances": "1",
+    "merge_logs": true
+  }
+}

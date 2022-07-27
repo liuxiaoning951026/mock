@@ -10,7 +10,7 @@ import axios from 'axios'
 export default {
   name: 'App',
   created () {
-    axios.defaults.baseURL = 'http://172.21.149.151'
+    // axios.defaults.baseURL = 'http://172.21.149.151'
     axios({
       method: 'get',
       // url: 'http://172.21.149.151:8080/aaa'
