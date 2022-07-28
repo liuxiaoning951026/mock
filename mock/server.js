@@ -14,6 +14,7 @@ let jsonfile = require('jsonfile')
 const app = new Koa() // 实例化koa对象
 const router = new Router()
 
+// 路由跳转前
 router.use(function (ctx, next) {
   ctx.set('Cache-Control', 'no-cache') // 强制要求缓存把请求提交给原始服务器进行验证
   ctx.set('Access-Control-Allow-Origin', '*') // 设置被允许跨域的请求有哪些：*代表全部允许

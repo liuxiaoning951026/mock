@@ -27,7 +27,7 @@
 - 充分利用async + await + promise的特点，有效的规避了回调函数，且增强了错误处理。
 - 快速而愉快地编写服务端应用程序。
 
-### 接着看一下，如何利用koa实现一个后端服务
+### 接着看一下，如何利用koa实现一个简单后端服务
   ![默认的目录](../assets/img2.jpg)
 
  ### 插件 jsonfile、koa-bodyparser、koa-router、pm2了解一下？
@@ -73,10 +73,13 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
-    "mock": "pm2 start ./mock/server.js"
+    "mock": "pm2 start pm2.mock.config.json"
   },
   ```
-- 配置server.js文件
+  参考此图：
+   ![默认的目录](../assets/img5.jpg)
+
+- 增加server.js文件（重点）
 
   ![默认的目录](../assets/img1.jpg)
 
