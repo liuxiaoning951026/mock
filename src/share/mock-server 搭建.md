@@ -51,6 +51,16 @@
 
   [1]: https://www.leixue.com/ask/what-is-pm2
 
+  常用命令：
+
+  ```
+    pm2 start app_name
+    pm2 restart app_name
+    pm2 reload app_name
+    pm2 stop app_name
+    pm2 delete app_name
+  ```
+
 # 搭建流程
 
 - 检查node版本是否可以使用koa。(Koa 依赖 node v7.6.0 或 ES2015及更高版本和 async 方法支持)
@@ -76,8 +86,21 @@
     "mock": "pm2 start pm2.mock.config.json"
   },
   ```
+- 手动增加pm2.mock.config.json文件或者使用命令配置文件模版（pm2 init===》pm2 ecosystem）
   参考此图：
    ![默认的目录](../assets/img5.jpg)
+
+  ```
+    {
+      "apps": {
+        "name": "server01", // name是进程标识，可以使用stop、delete等
+        "script": "./mock/server.js", // 启动脚本命令
+        "exec_mode": "cluster_mode",// 进程模式：cluster_mode/fork_mode,cluster有多个进程,而fork只有一个
+        "instances": "1",// 工作线程数量,PM2会根据你CPU核心的数量来生成对应的工作线程。仅在cluster模式有效。
+        "merge_logs": true // 合并日志
+      }
+    }
+  ```
 
 - 增加server.js文件（重点）
 
